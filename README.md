@@ -42,5 +42,7 @@ no navegador.
 ## Testes
 
 Tentar incluir um livro  - esperado : inclusão realizada com sucesso
+
 Tentar alterar o status do livro cadastrado - esperado: alteração realizada com sucesso
+
 Tentar excluir o livro - esperado: exclusão realizada com sucesso. 

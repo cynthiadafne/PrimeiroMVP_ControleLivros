@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Controle de Livros</title>
+
+<style>
+body{
+    font-family: Arial;
+    margin:40px;
+}
+
+input{
+    padding:8px;
+    margin:5px;
+}
+
+button{
+    padding:8px;
+    cursor:pointer;
+}
+
+table{
+    width:100%;
+    margin-top:20px;
+    border-collapse:collapse;
+}
+
+th,td{
+    border:1px solid #ccc;
+    padding:10px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Controle de Livros</h1>
+
+<input id="title" placeholder="Título">
+<input id="author" placeholder="Autor">
+
+<button onclick="addBook()">
+Adicionar Livro
+</button>
+
+<h3 id="suggestion"></h3>
+
+<table>
+<thead>
+<tr>
+<th>Título</th>
+<th>Autor</th>
+<th>Status</th>
+<th>Ações</th>
+</tr>
+</thead>
+
+<tbody id="books"></tbody>
+</table>
+
+<script>
+
+let books =
+JSON.parse(localStorage.getItem("books")) || [];
+
+function saveBooks(){
+    localStorage.setItem(
+        "books",
+        JSON.stringify(books)
+    );
+}
+
+function renderBooks(){
+
+    let tbody =
+    document.getElementById("books");
+
+    tbody.innerHTML = "";
+
+    books.forEach(book=>{
+
+        tbody.innerHTML += `
+            <tr>
+                <td>${book.title}</td>
+                <td>${book.author}</td>
+                <td>${book.status}</td>
+                <td>
+
+                    <button onclick="toggleStatus(${book.id})">
+                    Alterar
+                    </button>
+
+                    <button onclick="deleteBook(${book.id})">
+                    Excluir
+                    </button>
+
+                </td>
+            </tr>
+        `;
+    });
+}
+
+function addBook(){
+
+    const title =
+    document.getElementById("title").value;
+
+    const author =
+    document.getElementById("author").value;
+
+    if(!title || !author){
+        alert("Informe título e autor");
+        return;
+    }
+
+    books.push({
+
+        id:Date.now(),
+        title:title,
+        author:author,
+        status:"NAO_LIDO"
+
+    });
+
+    saveBooks();
+    renderBooks();
+
+    document.getElementById("title").value="";
+    document.getElementById("author").value="";
+}
+
+function toggleStatus(id){
+
+    const book =
+    books.find(b=>b.id===id);
+
+    if(book){
+
+        book.status =
+        book.status==="LIDO"
+        ? "NAO_LIDO"
+        : "LIDO";
+
+        saveBooks();
+        renderBooks();
+    }
+}
+
+function deleteBook(id){
+
+    books =
+    books.filter(
+        b=>b.id!==id
+    );
+
+    saveBooks();
+    renderBooks();
+}
+
+
+renderBooks();
+
+</script>
+
+</body>
+</html>

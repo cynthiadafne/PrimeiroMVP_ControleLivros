@@ -1,5 +1,5 @@
 Relatório do Projeto MVP – Controle de Livros Lidos
-1. Finalidade do Sistema
+## 1. Finalidade do Sistema
 
 O sistema Controle de Livros Lidos foi desenvolvido como um MVP (Minimum Viable Product) com o objetivo de permitir que usuários mantenham um controle simples de sua lista de leitura.
 
@@ -12,7 +12,7 @@ Excluir livros da lista.
 
 O projeto foi desenvolvido com foco em simplicidade, facilidade de demonstração e possibilidade de evolução futura.
 
-2. Benefícios e Facilidades do Sistema
+## 2. Benefícios e Facilidades do Sistema
 
 O sistema apresenta diversas vantagens:
 
@@ -44,7 +44,8 @@ Integração com IA Generativa;
 Cadastro de usuários;
 Controle de categorias;
 Dashboard de leitura.
-3. Arquitetura Utilizada
+
+## 3. Arquitetura Utilizada
 
 O projeto foi desenvolvido seguindo princípios de Arquitetura em Camadas.
 
@@ -84,7 +85,7 @@ Model
 
 Representa os dados manipulados pelo sistema.
 
-4. Utilização da Inteligência Artificial
+## 4. Utilização da Inteligência Artificial
 
 A Inteligência Artificial foi utilizada em diversas etapas do desenvolvimento.
 
@@ -128,7 +129,9 @@ Criação de ambiente virtual;
 Configuração do Git;
 Integração com GitHub;
 Publicação do projeto.
-5. Principais Dificuldades Encontradas
+
+## 5. Principais Dificuldades Encontradas
+
 Configuração do Ambiente Python
 
 Inicialmente o projeto foi concebido utilizando:
@@ -165,7 +168,7 @@ failed to push some refs
 
 A solução envolveu sincronizar o repositório local com o remoto utilizando comandos Git.
 
-6. Onde Mais a IA Foi Utilizada
+## 6. Onde Mais a IA Foi Utilizada
 
 Além da geração de código, a IA foi empregada em:
 
@@ -202,7 +205,7 @@ Python;
 VS Code;
 Navegador.
 
-7. Plano de Testes
+## 7. Plano de Testes
 Objetivo
 
 Garantir que todas as funcionalidades do sistema estejam operando corretamente.
@@ -317,7 +320,7 @@ Status
 
 ✅ Aprovado
 
-8. Conclusão
+## 8. Conclusão
 
 O MVP desenvolvido atingiu seu objetivo principal de demonstrar a implementação de uma aplicação web simples para controle de livros lidos e pendentes. O projeto utilizou conceitos de arquitetura em camadas, boas práticas de organização de código e uso intensivo de Inteligência Artificial durante as etapas de planejamento, desenvolvimento, documentação e resolução de problemas.
 

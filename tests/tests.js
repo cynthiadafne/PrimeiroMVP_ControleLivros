@@ -28,7 +28,7 @@ function testCadastroLivro() {
         "Falha ao cadastrar livro"
     );
 
-    console.log("✅ Cadastro aprovado");
+    console.log(" Cadastro aprovado");
 }
 
 function testAlteracaoStatus() {
@@ -53,7 +53,7 @@ function testAlteracaoStatus() {
         "Falha ao alterar status"
     );
 
-    console.log("✅ Alteração de status aprovada");
+    console.log(" Alteração de status aprovada");
 }
 
 function testExclusaoLivro() {
@@ -78,7 +78,7 @@ function testExclusaoLivro() {
         "Falha ao excluir livro"
     );
 
-    console.log("✅ Exclusão aprovada");
+    console.log(" Exclusão aprovada");
 }
 
 function testPersistencia() {
@@ -102,7 +102,7 @@ function testPersistencia() {
         "Falha na persistência"
     );
 
-    console.log("✅ Persistência aprovada");
+    console.log(" Persistência aprovada");
 }
 
 testCadastroLivro();

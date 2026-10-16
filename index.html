@@ -52,7 +52,6 @@ Adicionar Livro
 <th>Título</th>
 <th>Autor</th>
 <th>Status</th>
-<th>Ações</th>
 </tr>
 </thead>
 
@@ -71,33 +70,40 @@ function saveBooks(){
     );
 }
 
-function renderBooks(){
+function renderBooks() {
 
-    let tbody =
-    document.getElementById("books");
+    const tbody =
+        document.getElementById("books");
 
     tbody.innerHTML = "";
 
-    books.forEach(book=>{
+    books.forEach(book => {
 
-        tbody.innerHTML += `
-            <tr>
-                <td>${book.title}</td>
-                <td>${book.author}</td>
-                <td>${book.status}</td>
-                <td>
+        const tr = document.createElement("tr");
 
-                    <button onclick="toggleStatus(${book.id})">
-                    Alterar
-                    </button>
+        const tdTitle =
+            document.createElement("td");
 
-                    <button onclick="deleteBook(${book.id})">
-                    Excluir
-                    </button>
+        tdTitle.textContent =
+            book.title;
 
-                </td>
-            </tr>
-        `;
+        const tdAuthor =
+            document.createElement("td");
+
+        tdAuthor.textContent =
+            book.author;
+
+        const tdStatus =
+            document.createElement("td");
+
+        tdStatus.textContent =
+            book.status;
+
+        tr.appendChild(tdTitle);
+        tr.appendChild(tdAuthor);
+        tr.appendChild(tdStatus);
+
+        tbody.appendChild(tr);
     });
 }
 

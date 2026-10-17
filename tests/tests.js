@@ -8,104 +8,189 @@ function carregarLivros() {
 
 function testCadastroLivro() {
 
-    limparDados();
+    try {
 
-    books = [];
+        localStorage.removeItem("books");
 
-    books.push({
-        id: 1,
-        title: "Clean Code",
-        author: "Robert Martin",
-        status: "NAO_LIDO"
-    });
+        books = [];
 
-    saveBooks();
+        document.getElementById("title").value =
+            "Clean Code";
 
-    const resultado = carregarLivros();
+        document.getElementById("author").value =
+            "Robert Martin";
 
-    console.assert(
-        resultado.length === 1,
-        "Falha ao cadastrar livro"
-    );
+        addBook();
 
-    console.log(" Cadastro aprovado");
+        const dados =
+            JSON.parse(
+                localStorage.getItem("books")
+            ) || [];
+
+        if (dados.length !== 1) {
+            throw new Error(
+                "Livro não foi cadastrado."
+            );
+        }
+
+        if (dados[0].title !== "Clean Code") {
+            throw new Error(
+                "Título incorreto."
+            );
+        }
+
+        if (dados[0].author !== "Robert Martin") {
+            throw new Error(
+                "Autor incorreto."
+            );
+        }
+
+        console.log(
+            " Cadastro aprovado"
+        );
+
+    } catch (erro) {
+
+        console.error(
+            " Falha no cadastro:",
+            erro.message
+        );
+    }
 }
 
 function testAlteracaoStatus() {
 
-    limparDados();
+    try {
 
-    books = [{
-        id: 1,
-        title: "DDD",
-        author: "Eric Evans",
-        status: "NAO_LIDO"
-    }];
+        localStorage.removeItem("books");
 
-    saveBooks();
+        books = [{
+            id: 1,
+            title: "DDD",
+            author: "Eric Evans",
+            status: "NAO_LIDO"
+        }];
 
-    toggleStatus(1);
+        saveBooks();
 
-    const resultado = carregarLivros();
+        toggleStatus(1);
 
-    console.assert(
-        resultado[0].status === "LIDO",
-        "Falha ao alterar status"
-    );
+        const dados =
+            JSON.parse(
+                localStorage.getItem("books")
+            );
 
-    console.log(" Alteração de status aprovada");
+        if (
+            dados[0].status !== "LIDO"
+        ) {
+            throw new Error(
+                "Status não alterado."
+            );
+        }
+
+        console.log(
+            " Alteração de status aprovada"
+        );
+
+    } catch (erro) {
+
+        console.error(
+            " Falha na alteração:",
+            erro.message
+        );
+    }
 }
-
 function testExclusaoLivro() {
 
-    limparDados();
+    try {
 
-    books = [{
-        id: 1,
-        title: "Refactoring",
-        author: "Martin Fowler",
-        status: "NAO_LIDO"
-    }];
+        localStorage.removeItem("books");
 
-    saveBooks();
+        books = [{
+            id: 1,
+            title: "Refactoring",
+            author: "Martin Fowler",
+            status: "NAO_LIDO"
+        }];
 
-    deleteBook(1);
+        saveBooks();
 
-    const resultado = carregarLivros();
+        deleteBook(1);
 
-    console.assert(
-        resultado.length === 0,
-        "Falha ao excluir livro"
-    );
+        const dados =
+            JSON.parse(
+                localStorage.getItem("books")
+            ) || [];
 
-    console.log(" Exclusão aprovada");
+        if (dados.length !== 0) {
+
+            throw new Error(
+                "Livro não foi removido."
+            );
+        }
+
+        console.log(
+            " Exclusão aprovada"
+        );
+
+    } catch (erro) {
+
+        console.error(
+            " Falha na exclusão:",
+            erro.message
+        );
+    }
 }
 
 function testPersistencia() {
 
-    limparDados();
+    try {
 
-    books = [{
-        id: 1,
-        title: "Clean Architecture",
-        author: "Robert Martin",
-        status: "NAO_LIDO"
-    }];
+        localStorage.removeItem("books");
 
-    saveBooks();
+        books = [{
+            id: 1,
+            title: "Clean Architecture",
+            author: "Robert Martin",
+            status: "NAO_LIDO"
+        }];
 
-    const resultado =
-        JSON.parse(localStorage.getItem("books"));
+        saveBooks();
 
-    console.assert(
-        resultado.length === 1,
-        "Falha na persistência"
-    );
+        const dados =
+            JSON.parse(
+                localStorage.getItem("books")
+            );
 
-    console.log(" Persistência aprovada");
+        if (dados.length !== 1) {
+
+            throw new Error(
+                "Persistência falhou."
+            );
+        }
+
+        console.log(
+            " Persistência aprovada"
+        );
+
+    } catch (erro) {
+
+        console.error(
+            " Falha na persistência:",
+            erro.message
+        );
+    }
 }
+
+console.log(
+    "===== INICIANDO TESTES ====="
+);
 
 testCadastroLivro();
 testAlteracaoStatus();
 testExclusaoLivro();
 testPersistencia();
+
+console.log(
+    "===== TESTES FINALIZADOS ====="
+);
